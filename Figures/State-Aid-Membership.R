@@ -2,18 +2,21 @@
 
 library(tidyverse)
 library(TannersTools)
+library(scales)
 tt_dir_rd()
 
 
 # Enrollment Trend
-tt_import_cy_data(8) %>% 
+df <- tt_import_cy_data(8) %>% 
   mutate(dnum = as.numeric(dcode)) %>% 
   group_by(FY) %>% 
-  summarise(pupilcnt = sum(pupilcnt, na.rm = TRUE)) %>% 
+  summarise(pupilcnt = sum(pupilcnt, na.rm = TRUE))
+
+df %>% 
   ggplot(aes(FY, pupilcnt))+
   geom_line()+
   geom_point()+
-  scale_x_continuous(n.breaks = (max(cydata_state$FY) - min(cydata_state$FY)))+
+  scale_x_continuous(n.breaks = (max(df$FY) - min(df$FY)))+
   scale_y_continuous(labels = comma_format())+
   theme_classic()+
   labs(title = "State Aid Membership",
