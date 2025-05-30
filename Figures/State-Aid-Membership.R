@@ -1,11 +1,5 @@
 
 
-library(tidyverse)
-library(TannersTools)
-library(scales)
-tt_dir_rd()
-
-
 # Enrollment Trend
 df <- tt_import_cy_data(8) %>% 
   mutate(dnum = as.numeric(dcode)) %>% 
