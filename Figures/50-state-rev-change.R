@@ -59,7 +59,7 @@ RevChange_1995_50_State
 
 
 ggsave(plot = RevChange_1995_50_State,
-       filename = "RevChange_1995_50_State.svg",
+       filename = tt_dir_projects("Ed-Finance-Data-Viz", "RevChange_1995_50_State.svg"),
        width = 9,
        height = 6)
 
